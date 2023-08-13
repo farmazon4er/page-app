@@ -1,0 +1,17 @@
+%h1 Pages
+- @pages.each do |page|
+  %ul
+    %li #{page.name}
+    %p Description: #{page.description}
+    - if page.has_children?
+      - page.children.each do |child|
+        %ul
+          %li #{child.name}
+          %p 
+            Description: #{child.description}
+            - if child.has_children?
+              - child.children.each do |grandchildren|
+                %ul
+                  %li #{grandchildren.name}
+                  %p Description: #{grandchildren.description}
+
